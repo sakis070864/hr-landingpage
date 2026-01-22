@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 @theme {
-    --color-night: #050505;
+    --color-night: #1a202c;
     --color-day: #fdfbff;
     --color-accent-light: #f5f3ff;
-    --color-accent-dark: #0a0a0b;
+    --color-accent-dark: #2d3748;
 
     --font-inter: 'Inter', sans-serif;
 }
