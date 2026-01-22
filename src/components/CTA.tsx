@@ -1,38 +1,57 @@
-
 import React, { useState } from 'react';
 import { ArrowRight, User, AtSign, Briefcase } from 'lucide-react';
+import CaptchaModal from './CaptchaModal';
 
 const CTA: React.FC = () => {
   const [formData, setFormData] = useState({ name: '', email: '' });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [isCaptchaOpen, setIsCaptchaOpen] = useState(false);
 
-  const handleRequest = async (e: React.FormEvent) => {
+  const handleInitialClick = (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus('loading');
+    if (formData.name && formData.email) {
+      setIsCaptchaOpen(true);
+    }
+  };
 
+  const handleCaptchaVerify = async (question: string, answer: string, token: string): Promise<boolean> => {
     try {
       const response = await fetch('/api/send-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          captchaQuestion: question,
+          captchaAnswer: answer,
+          captchaToken: token
+        }),
       });
 
       if (response.ok) {
+        setIsCaptchaOpen(false);
         setStatus('success');
         setFormData({ name: '', email: '' });
+        return true;
       } else {
         const errorData = await response.json();
         console.error("SERVER ERROR DETAILS:", errorData);
-        setStatus('error');
+        // Return false to tell Modal to show error and refresh
+        return false;
       }
     } catch (error) {
       console.error(error);
-      setStatus('error');
+      return false;
     }
   };
 
   return (
     <section id="contact" className="py-32 bg-accent-light dark:bg-black overflow-hidden scroll-mt-20 transition-colors duration-500">
+      <CaptchaModal
+        isOpen={isCaptchaOpen}
+        onClose={() => setIsCaptchaOpen(false)}
+        onVerify={handleCaptchaVerify}
+      />
+
       <div className="max-w-4xl mx-auto px-6 lg:px-8">
         <div className="bg-white dark:bg-white/[0.02] border border-purple-100 dark:border-white/5 rounded-[4rem] p-12 md:p-24 text-center relative overflow-hidden premium-shadow-light dark:shadow-none">
           {/* Decorative background element */}
@@ -49,7 +68,7 @@ const CTA: React.FC = () => {
               Practice makes permanent. Get your unique training link and start your first simulation.
             </p>
 
-            <form onSubmit={handleRequest} className="flex flex-col items-center gap-6 max-w-sm mx-auto">
+            <form onSubmit={handleInitialClick} className="flex flex-col items-center gap-6 max-w-sm mx-auto">
               <div className="w-full space-y-4">
                 <div className="relative">
                   <User className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-purple-300 dark:text-slate-600" />
@@ -78,7 +97,7 @@ const CTA: React.FC = () => {
               <button
                 type="submit"
                 disabled={status === 'loading' || status === 'success'}
-                className="w-full py-6 bg-slate-900 dark:bg-white text-white dark:text-black font-black text-xl rounded-2xl hover:bg-purple-600 dark:hover:bg-purple-600 dark:hover:text-white transition-all flex items-center justify-center gap-4 group italic tracking-tighter shadow-2xl shadow-slate-900/20 dark:shadow-none disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full py-6 bg-slate-900 dark:bg-white text-white dark:text-black font-black text-xl rounded-2xl hover:bg-purple-600 dark:hover:bg-purple-600 dark:hover:text-white transition-all flex items-center justify-center gap-4 group italic tracking-tighter shadow-2xl shadow-slate-900/20 dark:shadow-none disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
               >
                 {status === 'loading' ? 'Sending...' : status === 'success' ? 'Request Sent!' : 'Send Request'}
                 {status === 'idle' && <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />}
