@@ -36,23 +36,9 @@ export default async function handler(req, res) {
 
         const prompt = `Generate a single, very simple trivia question about ${randomTopic} that a 12-year-old would know. Random seed: ${randomSeed}. Do NOT repeat previous questions. Do not provide the answer.`;
 
-        // User asked for "gemini 2.5 flash". This version doesn't exist publicly yet (1.5 is standard, 2.0 is exp). 
-        // We will try it, and fallback to 3-preview if it fails, ensuring we NEVER use 1.5 per user request.
-        let question;
-        try {
-            const result = await model.generateContent(prompt);
-            const response = await result.response;
-            question = response.text().trim();
-        } catch (modelError) {
-            console.warn("Gemini 2.5 failed. Falling back to Gemini 3 Flash Preview as requested.");
-            const fallbackModel = genAI.getGenerativeModel({
-                model: "gemini-3-flash-preview",
-                generationConfig: { temperature: 1.0 }
-            });
-            const fallbackResult = await fallbackModel.generateContent(prompt);
-            const fallbackResponse = await fallbackResult.response;
-            question = fallbackResponse.text().trim();
-        }
+        const result = await model.generateContent(prompt);
+        const response = await result.response;
+        const question = response.text().trim();
 
         // Sign the question to prevent client-side spoofing
         // We use the API Key as the secret since we know the server has it
