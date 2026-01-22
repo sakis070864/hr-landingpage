@@ -28,10 +28,12 @@ const CaptchaModal: React.FC<CaptchaModalProps> = ({ isOpen, onClose, onVerify }
                     setQuestion(data.question);
                     setToken(data.token);
                 } else {
-                    setError('Failed to load security challenge.');
+                    // Show distinct server error if present
+                    const serverMsg = data.details || data.message || 'Failed to load security challenge.';
+                    setError(serverMsg);
                 }
             })
-            .catch(() => setError('Failed to load security challenge.'))
+            .catch((err) => setError('Network Error: ' + err.message))
             .finally(() => setLoading(false));
     }, []);
 
