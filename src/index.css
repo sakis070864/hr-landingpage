@@ -1,7 +1,6 @@
-@import "tailwindcss";
-
-/* 👇 Αυτό το χρειάζεσαι για να δουλεύει το κουμπί Night Vision */
-@variant dark (&:where(.dark, .dark *));
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @theme {
     --color-night: #050505;
