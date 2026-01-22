@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* 👇 Πρόσθεσε αυτή τη γραμμή εδώ για να ενεργοποιήσεις το dark mode με class */
+/* 👇 Αυτό το χρειάζεσαι για να δουλεύει το κουμπί Night Vision */
 @variant dark (&:where(.dark, .dark *));
 
 @theme {
