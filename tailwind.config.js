@@ -6,7 +6,11 @@ export default {
   ],
   darkMode: 'class',
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        night: '#0F172A',
+      },
+    },
   },
   plugins: [],
 }
