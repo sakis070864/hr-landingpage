@@ -1,13 +1,7 @@
-
 import React from 'react';
-import { Briefcase, Sun, Moon } from 'lucide-react';
+import { Briefcase } from 'lucide-react';
 
-interface NavbarProps {
-  isDark: boolean;
-  toggleTheme: () => void;
-}
-
-const Navbar: React.FC<NavbarProps> = ({ isDark, toggleTheme }) => {
+const Navbar: React.FC = () => {
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
     const element = document.getElementById(id);
@@ -26,14 +20,14 @@ const Navbar: React.FC<NavbarProps> = ({ isDark, toggleTheme }) => {
   };
 
   return (
-    <nav className="fixed top-0 z-50 w-full bg-white/80 dark:bg-night/80 backdrop-blur-2xl border-b border-purple-100/50 dark:border-white/5 transition-colors">
+    <nav className="fixed top-0 z-50 w-full bg-night/80 backdrop-blur-2xl border-b border-purple-100/50 dark:border-white/5 transition-colors">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <div className="flex items-center gap-3 group cursor-pointer">
             <div className="bg-purple-600 p-2 rounded-xl shadow-lg shadow-purple-600/20 group-hover:scale-110 transition-transform">
               <Briefcase className="w-5 h-5 text-white" />
             </div>
-            <span className="font-black text-xl tracking-tighter text-slate-900 dark:text-white italic">HR-Trainer</span>
+            <span className="font-black text-xl tracking-tighter text-slate-900 text-white italic">HR-Trainer</span>
           </div>
           
           <div className="hidden md:flex items-center space-x-10 text-[13px] font-bold text-slate-500">
@@ -51,20 +45,6 @@ const Navbar: React.FC<NavbarProps> = ({ isDark, toggleTheme }) => {
             >
               How it works
             </a>
-            
-            <button 
-              onClick={toggleTheme}
-              className="flex items-center gap-2 px-4 py-2 rounded-full bg-purple-50 dark:bg-white/5 border border-purple-100 dark:border-white/10 hover:border-purple-300 dark:hover:border-purple-500/50 transition-all group premium-shadow-light dark:shadow-none"
-              title={isDark ? "Switch to Light Vision" : "Switch to Night Vision"}
-            >
-              <div className="relative w-4 h-4">
-                <Sun className={`absolute inset-0 w-4 h-4 text-orange-500 transition-all transform ${isDark ? 'scale-0 rotate-90' : 'scale-100 rotate-0'}`} />
-                <Moon className={`absolute inset-0 w-4 h-4 text-purple-600 dark:text-purple-400 transition-all transform ${isDark ? 'scale-100 rotate-0' : 'scale-0 -rotate-90'}`} />
-              </div>
-              <span className="text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-slate-400">
-                {isDark ? 'Night' : 'Light'} Vision
-              </span>
-            </button>
           </div>
 
           <div className="flex items-center">

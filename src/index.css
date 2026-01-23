@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 @theme {
-    --color-night: #0F172A;
-    --color-day: #fdfbff;
-    --color-accent-light: #f5f3ff;
-    --color-accent-dark: #2d3748;
+    --color-night: #0F172A; /* Dark blue background */
+    --color-day: #0F172A;   /* Also dark blue, as there's no light mode */
+    --color-accent-light: #4A5568; /* A lighter shade for accents in dark mode */
+    --color-accent-dark: #2D3748;  /* A slightly darker shade for accents in dark mode */
 
     --font-inter: 'Inter', sans-serif;
 }
@@ -25,7 +25,7 @@
 }
 
 .light-glass {
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.1); /* Adjusted for dark theme context */
     backdrop-filter: blur(12px);
     border: 1px solid rgba(168, 85, 247, 0.1);
 }
