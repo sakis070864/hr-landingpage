@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @theme {
-    --color-night: #1a202c;
+    --color-night: #0F172A;
     --color-day: #fdfbff;
     --color-accent-light: #f5f3ff;
     --color-accent-dark: #2d3748;
