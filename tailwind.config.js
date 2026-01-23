@@ -8,7 +8,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        night: '#0F172A',
+        night: '#020617',
       },
     },
   },

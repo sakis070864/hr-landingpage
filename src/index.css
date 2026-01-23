@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 :root {
-    --color-night: #0F172A;
+    --color-night: #020617;
     /* Dark blue background */
-    --color-day: #0F172A;
+    --color-day: #020617;
     /* Also dark blue, as there's no light mode */
     --color-accent-light: #4A5568;
     /* A lighter shade for accents in dark mode */
