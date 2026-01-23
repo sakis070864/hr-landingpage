@@ -45,7 +45,7 @@ const CTA: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-32 bg-accent-light dark:bg-black overflow-hidden scroll-mt-20 transition-colors duration-500">
+    <section id="contact" className="py-32 bg-accent-light dark:bg-night overflow-hidden scroll-mt-20 transition-colors duration-500">
       <CaptchaModal
         isOpen={isCaptchaOpen}
         onClose={() => setIsCaptchaOpen(false)}
