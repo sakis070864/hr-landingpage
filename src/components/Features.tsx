@@ -4,13 +4,13 @@ import { Cpu, Globe, Mic2, MessageSquare, Mic } from 'lucide-react';
 
 const Benefits: React.FC = () => {
   return (
-    <section id="benefits" className="py-20 md:py-32 bg-accent-light dark:bg-[#050505] overflow-hidden scroll-mt-20 transition-colors duration-500 relative">
+    <section id="benefits" className="py-20 md:py-32 bg-night overflow-hidden scroll-mt-20 transition-colors duration-500 relative">
       <div className="absolute top-0 right-0 p-32 opacity-10 blur-3xl bg-purple-200 dark:bg-purple-900/10 rounded-full w-96 h-96 -z-0"></div>
       
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         
         {/* New Vocal Interview Highlight Section */}
-        <div className="mb-32 p-8 md:p-16 rounded-[4rem] bg-white dark:bg-white/[0.02] border border-purple-100 dark:border-white/5 premium-shadow-light dark:shadow-none relative overflow-hidden group">
+        <div className="mb-32 p-8 md:p-16 rounded-[4rem] bg-white/[0.02] border border-purple-100 dark:border-white/5 premium-shadow-light dark:shadow-none relative overflow-hidden group">
           <div className="absolute -right-20 -top-20 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl group-hover:bg-purple-500/20 transition-colors duration-700"></div>
           
           <div className="flex flex-col md:flex-row items-center gap-12 relative z-10">
@@ -49,7 +49,7 @@ const Benefits: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-8">
             {/* Gemini 3 Flash Card */}
-            <div className="p-10 rounded-[3rem] bg-white dark:bg-white/[0.02] border border-purple-100 dark:border-white/5 hover:border-purple-400 transition-all text-left group premium-shadow-light dark:shadow-none hover:-translate-y-1">
+            <div className="p-10 rounded-[3rem] bg-white/[0.02] border border-purple-100 dark:border-white/5 hover:border-purple-400 transition-all text-left group premium-shadow-light dark:shadow-none hover:-translate-y-1">
               <div className="w-16 h-16 rounded-2xl bg-purple-50 dark:bg-purple-500/10 border border-purple-100 dark:border-purple-500/20 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
                 <Cpu className="w-8 h-8 text-purple-600 dark:text-purple-500" />
               </div>
@@ -62,7 +62,7 @@ const Benefits: React.FC = () => {
             </div>
 
             {/* Neural Grounding Card */}
-            <div className="p-10 rounded-[3rem] bg-white dark:bg-white/[0.02] border border-purple-100 dark:border-white/5 hover:border-indigo-400 transition-all text-left group premium-shadow-light dark:shadow-none hover:-translate-y-1">
+            <div className="p-10 rounded-[3rem] bg-white/[0.02] border border-purple-100 dark:border-white/5 hover:border-indigo-400 transition-all text-left group premium-shadow-light dark:shadow-none hover:-translate-y-1">
               <div className="w-16 h-16 rounded-2xl bg-indigo-50 dark:bg-indigo-500/10 border border-indigo-100 dark:border-indigo-500/20 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
                 <Globe className="w-8 h-8 text-indigo-600 dark:text-indigo-500" />
               </div>
@@ -75,7 +75,7 @@ const Benefits: React.FC = () => {
             </div>
 
             {/* Gemini 2.5 Multimodal Card */}
-            <div className="p-10 rounded-[3rem] bg-white dark:bg-white/[0.02] border border-purple-100 dark:border-white/5 hover:border-fuchsia-400 transition-all text-left group premium-shadow-light dark:shadow-none hover:-translate-y-1">
+            <div className="p-10 rounded-[3rem] bg-white/[0.02] border border-purple-100 dark:border-white/5 hover:border-fuchsia-400 transition-all text-left group premium-shadow-light dark:shadow-none hover:-translate-y-1">
               <div className="w-16 h-16 rounded-2xl bg-fuchsia-50 dark:bg-fuchsia-500/10 border border-fuchsia-100 dark:border-fuchsia-500/20 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
                 <Mic2 className="w-8 h-8 text-fuchsia-600 dark:text-fuchsia-500" />
               </div>
